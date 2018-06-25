@@ -29,7 +29,7 @@ public class StepDefintion {
 
 	public String cost;
 
-	public String userName;
+	public static String userName;
 
 	@Given("^user is on landing page$")
 	public void user_is_on_landing_page() throws Throwable {
@@ -62,6 +62,7 @@ public class StepDefintion {
 	@Then("^user lands on create an account page$")
 	public void user_lands_on_create_an_account_page() throws Throwable {
 
+		Thread.sleep(5000);
 		String url = driver.getCurrentUrl();
 		Assert.assertTrue(url.contains("account-creation"));
 		System.out.println("url------"+url);
@@ -69,8 +70,6 @@ public class StepDefintion {
 
 	@When("^user provides personal information$")
 	public void user_provides_personal_information() throws Throwable {
-
-		UtilityClass.wait(driver, By.xpath("//input[@id='id_gender1']"));
 
 		UtilityClass.clickEvent(driver, By.xpath("//input[@id='id_gender2']"));
 		UtilityClass.addText(driver, By.xpath("//input[@name=\"customer_firstname\"]"), "Tripti");
